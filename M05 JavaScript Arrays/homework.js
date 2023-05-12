@@ -249,6 +249,7 @@ function continueStatement(num) {
     if (i === 4) {
       continue; // Omitir la quinta iteración
     }
+   
     num += 2;
     resultado.push(num);
   }

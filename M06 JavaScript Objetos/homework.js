@@ -7,6 +7,14 @@ function crearGato(nombre, edad) {
    // La propiedad "meow" será una función que retorne el string: "Meow!".
    // Retornar el objeto.
    // Tu código:
+   var gato = {
+      nombre: nombre,
+      edad: edad,
+      meow: function() {
+         return "Meow!";
+      }
+   };
+   return gato;
 }
 
 function nuevoUsuario(nombre, email, password) {
@@ -14,6 +22,12 @@ function nuevoUsuario(nombre, email, password) {
    // Este debe tener las propiedades: "nombre", "email" y "password" con sus respectivos valores.
    // Retornar el objeto.
    // Tu código:
+   var usuario ={
+      nombre: nombre,
+      email: email,
+      password: password
+   };
+   return usuario;
 }
 
 function agregarPropiedad(objeto, propiedad) {
@@ -22,6 +36,13 @@ function agregarPropiedad(objeto, propiedad) {
    // Esta propiedad será igual al valor `null`.
    // Retornar el objeto.
    // Tu código:
+   objeto[propiedad] = null;
+   return objeto;
+//    var miObjeto = {nombre: "Juan"};
+// console.log(miObjeto); // {nombre: "Juan"}
+
+// agregarPropiedad(miObjeto, "edad");
+// console.log(miObjeto); // {nombre: "Juan", edad: null}
 }
 
 function invocarMetodo(objeto, metodo) {
@@ -29,50 +50,93 @@ function invocarMetodo(objeto, metodo) {
    // Esta propiedad contiene una función en su interior. Debes invocarla/ejecutarla.
    // [NOTA]: no necesitar retornar nada.
    // Tu código:
+   objeto[metodo]();
+
 }
 
 function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
    // El parámetro "objetoMisterioso" posee una propiedad con el nombre "numeroMisterioso".
    // Debes multiplicar este número por 5 y retornar el resultado.
    // Tu código:
+   var resultado = objetoMisterioso.numeroMisterioso * 5;
+   return resultado;
 }
+// var miObjeto = {
+//    numeroMisterioso: 10
+// };
+
+// var resultadoMultiplicacion = multiplicarNumeroDesconocidoPorCinco(miObjeto);
+// console.log(resultadoMultiplicacion); // Imprime: 50
 
 function eliminarPropiedad(objeto, propiedad) {
    // El parámetro "propiedad" es una propiedad del objeto que recibes.
    // Debes eliminarla del objeto y retornarlo finalmente.
    // Tu código:
+   delete objeto[propiedad];
+   return objeto;
 }
+// var miObjeto = {
+//    nombre: "John",
+//    edad: 30,
+//    ciudad: "New York"
+// };
+
+// var objetoSinPropiedad = eliminarPropiedad(miObjeto, "edad");
+// console.log(objetoSinPropiedad); // Imprime: { nombre: "John", ciudad: "New York" }
+
 
 function tieneEmail(objetoUsuario) {
    // Verifica si el "objetoUsuario", en su propiedad "email", posee un valor definido.
    // En ese caso retornar true. Caso contrario, false.
    // Tu código:
+   return objetoUsuario.hasOwnProperty('email') && objetoUsuario.email !== undefined && objetoUsuario.email !== null;
 }
 
 function tienePropiedad(objeto, propiedad) {
    // Verifica si el objeto recibido posee una propiedad con el mismo nombre que el parámetro "propiedad".
    // En ese caso retornar true. Caso contrario, false.
    // Tu código:
+   return objeto.hasOwnProperty(propiedad);
 }
 
 function verificarPassword(objetoUsuario, password) {
    // Verifica si la propiedad "password" del "objetoUsuario" coincide con el parámetro "password".
    // En ese caso retornar true. Caso contrario, false.
    // Tu código:
+   return objetoUsuario.password === password;
+
 }
+// var usuario1 = {
+//    nombre: "John Doe",
+//    password: "secreto123"
+// };
+
+// var usuario2 = {
+//    nombre: "Jane Smith",
+//    password: "contraseña456"
+// };
+
+// console.log(verificarPassword(usuario1, "secreto123")); // Imprime: true
+// console.log(verificarPassword(usuario1, "incorrecta")); // Imprime: false
+// console.log(verificarPassword(usuario2, "contraseña456")); // Imprime: true
 
 function actualizarPassword(objetoUsuario, nuevaPassword) {
    // Reemplaza la contrseña guardada en la propiedad "password" del "objetoUsuario".
    // La nueva contraseña la recibes por parámetro.
    // Retornar el objeto.
    // Tu código:
+   objetoUsuario.password =nuevaPassword;
+   return objetoUsuario;
 }
+
 
 function agregarAmigo(objetoUsuario, nuevoAmigo) {
    // El parámetro "objetoUsuario" tiene una propiedad llamada "amigos" igual a un arreglo.
    // Debes agregar el "nuevoAmigo" al final de este arreglo.
    // Retornar el objeto.
    // Tu código:
+   objetoUsuario.amigos.push(nuevoAmigo);
+   return objetoUsuario;
 }
 
 function pasarUsuarioAPremium(objetoMuchosUsuarios) {
@@ -81,7 +145,19 @@ function pasarUsuarioAPremium(objetoMuchosUsuarios) {
    // Define esta propiedad de todos los usuarios como true.
    // Retornar el arreglo.
    // Tu código:
+
+   for (var i = 0; i < objetoMuchosUsuarios.length; i++) {
+      objetoMuchosUsuarios[i].esPremium = true;
+   }
+   return objetoMuchosUsuarios;
 }
+// var objetoMuchosUsuarios = [
+//    { nombre: "Usuario1", esPremium: false },
+//    { nombre: "Usuario2", esPremium: false },
+//    { nombre: "Usuario3", esPremium: false }
+// ];
+
+// console.log(pasarUsuarioAPremium(objetoMuchosUsuarios));
 
 function sumarLikesDeUsuario(objetoUsuario) {
    // El parámetro "objetoUsuario" tiene una propiedad llamada "posts" que es un arreglo.
@@ -89,6 +165,13 @@ function sumarLikesDeUsuario(objetoUsuario) {
    // Cada post posee una propiedad llamada "likes". Esta propiedad es un número.
    // Debes sumar los likes de todos los post y retornar el resultado.
    // Tu código:
+   var totalLikes = 0;
+
+   for (var i = 0; i < objetoUsuario.posts.length; i++) {
+      totalLikes += objetoUsuario.posts[i].likes;
+   }
+
+   return totalLikes;
 }
 
 function agregarMetodoCalculoDescuento(objetoProducto) {
@@ -102,6 +185,13 @@ function agregarMetodoCalculoDescuento(objetoProducto) {
    // PorcentajeDeDescuento ---> 0.2
    // Precio final ---> 8
    // Tu código:
+   objetoProducto.calcularPrecioDescuento = function() {
+      var precioDescuento = this.precio * this.porcentajeDeDescuento;
+      var precioFinal = this.precio - precioDescuento;
+      return precioFinal;
+   };
+
+   return objetoProducto.calcularPrecioDescuento();
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
