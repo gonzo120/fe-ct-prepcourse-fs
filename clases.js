@@ -80,4 +80,16 @@
 
  //console.log(objetoPersona.nombre);
  console.log(objetoPersona.saludar());
+
+//metodo split
+
+ const cadena = "Hola, mundo, JavaScript";
+const array = cadena.split(","); // separa la cadena haciendo caso al simbolo separador
+console.log(array); // Output: ["Hola", "mundo", "JavaScript"]
+
+//metodo reverse
+
+const array2 = ["Hola", "mundo", "JavaScript"];
+array.reverse();
+console.log(array2); // Output: ["JavaScript", "mundo", "Hola"]
  
